@@ -1,26 +1,45 @@
-<html ng-app="sampleApp">
+<html ng-app="bloc-chat">
 
-<body ng-controller="SampleCtrl">
-    <ul>
-        <li ng-repeat="message in messages">
-            <!-- edit a message -->
-            <input ng-model="message.text" ng-change="messages.$save(message)" />
-            <!-- delete a message -->
-            <button ng-click="messages.$remove(message)">Delete Message</button>
-        </li>
-    </ul>
-    <!-- push a new message onto the array -->
-    <form ng-submit="addMessage()">
-        <input ng-model="newMessageText" />
-        <button type="submit">Add Message</button>
-    </form>
-    
-    
-    
-    
-    
-    
-    
+<body ng-controller="appCtrl">
+    <div id="addMsg">
+        <ul>
+            <li ng-repeat="message in messages">
+                <!-- edit a message -->
+                <input ng-model="message.text" ng-change="messages.$save(message)" />
+                <!-- delete a message -->
+                <button ng-click="messages.$remove(message)">Delete Message</button>
+            </li>
+        </ul>
+        <!-- push a new message onto the array -->
+        <form ng-submit="addMessage()">
+            <input ng-model="newMessageText" />
+            <button type="submit">Add Message</button>
+        </form>
+    </div>
+
+    <div id="addRoom">
+
+        <!-- push a new message onto the array -->
+        <form ng-submit="addRoom()">
+            <input ng-model="newRoomName" />
+            <button type="submit">Add Room</button>
+        </form>
+          <button ng-click="hidden=true">List Rooms</button> 
+    </div>
+    <div id="roomList" ng-show="hidden">
+        <ul>
+            <li ng-repeat="room in rooms">
+                <!-- edit a message -->
+                <input ng-model="room.text" ng-change="rooms.$save(room)" />
+                <!-- delete a message -->
+                <button ng-click="rooms.$remove(room)">Delete Room</button>
+            </li>
+        </ul>
+
+    </div>
+
+
+
 </body>
 
 <!-- Angular -->
@@ -47,5 +66,6 @@
 </script>
 
 <script src="/scripts/app.js"></script>
+<script src="/scripts/Controllers/main.js"></script>
 
 </html>
