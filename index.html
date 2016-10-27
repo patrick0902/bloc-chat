@@ -1,23 +1,51 @@
-<!DOCTYPE html>
-<html>
+<html ng-app="sampleApp">
 
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Bloc Base Project</title>
-    <link rel="stylesheet" href="/styles/style.css">
-</head>
-
-<body>
-    Hi THere!
-    <script src="/scripts/app.js"></script>
+<body ng-controller="SampleCtrl">
+    <ul>
+        <li ng-repeat="message in messages">
+            <!-- edit a message -->
+            <input ng-model="message.text" ng-change="messages.$save(message)" />
+            <!-- delete a message -->
+            <button ng-click="messages.$remove(message)">Delete Message</button>
+        </li>
+    </ul>
+    <!-- push a new message onto the array -->
+    <form ng-submit="addMessage()">
+        <input ng-model="newMessageText" />
+        <button type="submit">Add Message</button>
+    </form>
+    
+    
+    
+    
+    
+    
+    
 </body>
+
 <!-- Angular -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
 <!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.5.1/firebase.js"></script>
 
 <!-- AngularFire -->
 <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyD4PUHVfKsmPhPEUj0BwGzw-qJZxp5LvVA",
+        authDomain: "bloc-chat-4a7cb.firebaseapp.com",
+        databaseURL: "https://bloc-chat-4a7cb.firebaseio.com",
+        storageBucket: "bloc-chat-4a7cb.appspot.com",
+        messagingSenderId: "890236754694"
+    };
+    firebase.initializeApp(config);
+
+</script>
+
+<script src="/scripts/app.js"></script>
 
 </html>
