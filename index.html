@@ -19,8 +19,7 @@
 
     <div id="addRoom">
 
-        <!-- push a new message onto the array -->
-        <form ng-submit="addRoom()">
+        <form ng-submit="addRoom(newRoomName)">
             <input ng-model="newRoomName" />
             <button type="submit">Add Room</button>
         </form>
@@ -30,12 +29,20 @@
         <ul>
             <li ng-repeat="room in rooms">
                 <!-- edit a message -->
-                <input ng-model="room.text" ng-change="rooms.$save(room)" />
+                <input ng-model="room.roomName" ng-change="rooms.$save(room)" />
                 <!-- delete a message -->
                 <button ng-click="rooms.$remove(room)">Delete Room</button>
             </li>
         </ul>
 
+    </div>
+    
+        <div id="addUser" ng-show="hidden">
+
+        <form ng-submit="addUser(newUserName)">
+            <input ng-model="newUserName" />
+            <button type="submit">Add User</button>
+        </form>
     </div>
 
 
